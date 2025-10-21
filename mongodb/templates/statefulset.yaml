@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Statefulset
+kind: StatefulSet
 metadata:
   name: mongodb
   namespace: roboshop
@@ -29,12 +29,12 @@ spec:
         - name: mongodb-data
           mountPath: /data/db
 
-volumeClaimTemplates:
-- metadata:
-    name: mongodb-data
-  spec:
-    accessModes: ["ReadWriteOnce"]
-    storageClassName: "roboshop-ebs"
-    resources:
-      requests:
-        storage: 2Gi
+  volumeClaimTemplates:
+  - metadata:
+      name: mongodb-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: "roboshop-ebs"
+      resources:
+        requests:
+          storage: 2Gi
