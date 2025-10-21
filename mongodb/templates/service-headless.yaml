@@ -3,12 +3,12 @@ kind: Service
 metadata:
   name: mongodb-headless
   namespace: roboshop
-  lables:
+  labels:
     component: mongodb
     project: roboshop
     tier: database
 spec:
-  clusterIP: none
+  clusterIP: None
   selector:
     component: mongodb
     project: roboshop
