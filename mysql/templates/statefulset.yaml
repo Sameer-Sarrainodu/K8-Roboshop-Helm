@@ -23,21 +23,21 @@ spec:
         tier: database
     spec:
       containers:
-      - name: mysql
-        image: "{{ .Values.statefulset.imageurl}}:{{ .Values.statefulset.imageversion }}"
-        envFrom:
-        - secretRef:
-            name: mysql
-        volumeMounts:
-        - name: mysql-data
-          mountPath: /var/lib/mysql
+        - name: mysql
+          image: "{{ .Values.statefulset.imageurl}}:{{ .Values.statefulset.imageversion }}"
 
+          envFrom:
+            - secretRef:
+                name: mysql
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
   volumeClaimTemplates:
-  - metadata:
-      name: mysql-data
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      storageClassName: "roboshop-ebs"
-      resources:
-        requests:
-          storage: 2Gi
+    - metadata:
+        name: mysql-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: "roboshop-ebs"
+        resources:
+          requests:
+            storage: 2Gi
