@@ -21,16 +21,16 @@ spec:
         component: mysql
         project: roboshop
         tier: database
-  spec:
-    containers:
-    - name: mysql
-      image: "{{ .Values.statefulset.imageurl}}:{{ .Values.statefulset.imageversion }}"
-      envFrom:
-      - secretRef:
-          name: mysql
-      volumeMounts:
-      - name: mysql-data
-        mountPath: /var/lib/mysql
+    spec:
+      containers:
+      - name: mysql
+        image: "{{ .Values.statefulset.imageurl}}:{{ .Values.statefulset.imageversion }}"
+        envFrom:
+        - secretRef:
+            name: mysql
+        volumeMounts:
+        - name: mysql-data
+          mountPath: /var/lib/mysql
 
   volumeClaimTemplates:
   - metadata:
